@@ -44,31 +44,6 @@
   --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-:root[data-theme="dark"] {
-  --bg:        #0d0e11;
-  --surface:   #171a1d;
-  --surface-2: #1c1f23;
-  --surface-3: #23262b;
-  --line:      #2d3137;
-  --line-2:    #43474f;
-
-  --ink:   #ececea;
-  --ink-2: #b6bbc2;
-  --ink-3: #8d939a;
-
-  --accent:  #4fb9a4;
-  --accent-w:#16302b;
-  --neg:     #e07a7a;
-
-  --scroll-track: #171a1d;
-  --scroll-thumb: #3c424a;
-  --scroll-thumb-hi: #525963;
-
-  --shadow: 0 1px 2px rgba(0, 0, 0, .3);
-
-  color-scheme: dark;
-}
-
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -117,6 +92,14 @@ p, ol, ul { margin: 0; }
 .hd h1 { font-size: 21px; }
 .hd-actions { display: flex; gap: var(--s2); flex: none; }
 
+.brand { display: flex; align-items: center; gap: var(--s3); min-width: 0; }
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  object-fit: contain;
+}
+
 .btn {
   font: inherit;
   font-size: 14px;
@@ -129,7 +112,6 @@ p, ol, ul { margin: 0; }
   transition: background .12s ease, color .12s ease;
 }
 .btn:hover { background: var(--surface-3); color: var(--ink); }
-.btn-icon { display: grid; place-items: center; width: 36px; height: 34px; padding: 0; }
 
 /* Cards */
 
@@ -470,7 +452,7 @@ ul.asm li::before {
 
   input[type="number"], select { padding: 11px 12px; font-size: 15px; }
   .btn { padding: 10px 16px; min-height: 44px; }
-  .btn-icon { width: 44px; height: 44px; padding: 0; }
+  .brand-logo { width: 28px; height: 28px; }
   /* comfortable thumb target for the whole label row */
   .chk { padding-top: var(--s3); min-height: 46px; }
   .chk input { width: 18px; height: 18px; }

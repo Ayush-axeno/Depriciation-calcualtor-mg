@@ -236,21 +236,9 @@ function applyDefaults() {
   syncResale();
 }
 
-function initTheme() {
-  const saved = localStorage.getItem('dep-theme');
-  const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  document.documentElement.dataset.theme = saved || (dark ? 'dark' : 'light');
-  $('#themeBtn').addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem('dep-theme', next);
-  });
-}
-
 function init() {
   buildModelSelect();
   applyDefaults();
-  initTheme();
   stopWheelOnNumbers();
 
   $('#resale').addEventListener('input', () => { resaleTouched = true; });
