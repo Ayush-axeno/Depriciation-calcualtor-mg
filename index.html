@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vehicle Depreciation &amp; Tax Benefit Calculator</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="hd">
+    <h1>Vehicle Depreciation &amp; Tax Benefit Calculator</h1>
+    <div class="hd-actions">
+      <button type="button" class="btn" id="resetBtn">Reset</button>
+      <button type="button" class="btn btn-icon" id="themeBtn" aria-label="Switch between light and dark" title="Switch between light and dark">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.4 3.4l.85.85M11.75 11.75l.85.85M12.6 3.4l-.85.85M4.25 11.75l-.85.85" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/><circle cx="8" cy="8" r="3.1" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <form id="calc" class="card strip" autocomplete="off">
+
+    <div class="blk">
+      <h2 class="blk-t">The car</h2>
+      <div class="fld">
+        <label for="model">Model</label>
+        <select id="model"></select>
+        <p class="note" id="priceNote"></p>
+      </div>
+      <div class="fld">
+        <label for="discount">Discount</label>
+        <div class="money pct"><input type="number" id="discount" step="1" min="0" max="100" value="0"><span>%</span></div>
+        <p class="note" id="costNote"></p>
+      </div>
+    </div>
+
+    <div class="blk">
+      <h2 class="blk-t">Depreciation</h2>
+      <div class="duo">
+        <div class="fld">
+          <label for="rate">Rate</label>
+          <select id="rate">
+            <option value="0.15">15%</option>
+            <option value="0.30">30%</option>
+            <option value="0.40" selected>40%</option>
+            <option value="0.45">45%</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label for="years">Years kept</label>
+          <select id="years">
+            <option value="1">1 year</option>
+            <option value="2">2 years</option>
+            <option value="3" selected>3 years</option>
+            <option value="4">4 years</option>
+            <option value="5">5 years</option>
+          </select>
+        </div>
+      </div>
+      <label class="chk">
+        <input type="checkbox" id="halfYear">
+        <span>Half rate in first year</span>
+      </label>
+    </div>
+
+    <div class="blk">
+      <h2 class="blk-t">Tax</h2>
+      <div class="fld">
+        <label for="taxRate">Tax rate</label>
+        <div class="money pct"><input type="number" id="taxRate" step="0.001" min="0" max="100" value="34.944"><span>%</span></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <h2 class="blk-t">Resale</h2>
+      <div class="fld">
+        <label for="resale">Value when sold</label>
+        <div class="money pct"><input type="number" id="resale" step="1" min="0" max="200"><span>%</span></div>
+        <p class="note" id="resaleNote"></p>
+      </div>
+      <label class="chk">
+        <input type="checkbox" id="balCharge">
+        <span>Tax the profit on sale</span>
+      </label>
+    </div>
+
+  </form>
+
+  <section class="result" aria-live="polite">
+    <div class="result-main">
+      <p class="result-lbl" id="heroLbl">Tax saved</p>
+      <p class="result-val" id="heroVal">&#8377;0</p>
+      <p class="result-sub" id="heroSub"></p>
+    </div>
+    <dl class="result-grid" id="resultGrid"></dl>
+  </section>
+
+  <section class="card">
+    <div class="card-hd"><h2>Depreciation schedule</h2></div>
+    <div class="scroll-x">
+      <table class="sched" id="sched"></table>
+    </div>
+  </section>
+
+  <details class="working">
+    <summary>Working and assumptions</summary>
+    <div class="working-bd">
+      <ol class="steps" id="steps"></ol>
+      <ul class="asm" id="asm"></ul>
+    </div>
+  </details>
+
+</div>
+
+<script src="vehicles.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
